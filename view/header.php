@@ -5,8 +5,9 @@
     <title>PASS</title>
     <link rel="stylesheet" href="view/style.css">
 </head>
-<body>
-    <header>
+<header>
         <h1>Pemakaian Warehouse</h1>
     </header>
+<body>
+   
     
