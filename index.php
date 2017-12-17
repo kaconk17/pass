@@ -31,6 +31,12 @@ require_once "view/header.php";
     <table border ='1' width = '800'>
 
 </form>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#cari').datepicker();
+    });
+
+</script>
 <tr>
 <th>Item Code</th>
 <th>Item</th>
