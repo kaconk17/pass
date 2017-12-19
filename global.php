@@ -1,6 +1,15 @@
 <?php
 require_once "core/init.php";
 require_once "view/header.php";
+if (isset($_POST['submit'])) {
+    $tanggal_awal = $_POST['awal'];
+    $tanggal_akhir = $_POST['akhir'];
+} else {
+    # code...
+}
+
+
+
 
 ?>
 
@@ -22,22 +31,22 @@ require_once "view/header.php";
 $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL";
 $result= sqlsrv_query ($conn, $query);
 
-while ($data = sqlsrv_fetch_array($result)){
+//while ($data = sqlsrv_fetch_array($result)){
 
-    echo "
-    <tr>
+ //   echo "
+ //   <tr>
    
-    <td>".$data['item_code']."</td>
-    <td>".$data ['item']."</td>
-    <td>".$data['spesifikasi']."</td>
-    <td>".$data['qty']."</td>
-    <td>".$data ['uom']."</td>
-<td>".$data['class']."</td>
-<td><a href=function/list.php?item=$data[item_code] style=text-decoration:none onclick=post>Edit</a></td>
-    </tr>
-    ";
+ //   <td>".$data['item_code']."</td>
+ //   <td>".$data ['item']."</td>
+  //  <td>".$data['spesifikasi']."</td>
+ //   <td>".$data['qty']."</td>
+ //   <td>".$data ['uom']."</td>
+//<td>".$data['class']."</td>
+//<td><a href=function/list.php?item=$data[item_code] style=text-decoration:none onclick=post>Detail</a></td>
+  //  </tr>
+   // ";
     //sqlsrv_close();
-}
+//}
 ?>
 </table>
 <?php

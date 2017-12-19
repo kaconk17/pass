@@ -24,12 +24,12 @@ require_once "view/header.php";
 
 ?>
 
-<form action="index.php" method = "post">
+<form action="global.php" method = "post">
     <label for="">From</label><br>
-    <input type="text" id="awal"> <br>
-    <label for="">to</label><br>
-    <input type="text" id="akhir"> <br>
-    <input type="submit" name="submit" value="Cari">
+    <input type="text" id="awal" name="awal"> <br><br>
+    <label for="">To</label><br>
+    <input type="text" id="akhir" name="akhir"> <br>
+    <input type="submit" name="submit" value="Submit">
     
 
 </form>
