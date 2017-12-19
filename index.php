@@ -42,7 +42,7 @@ require_once "view/footer.php";
 ?> 
 <script type="text/javascript">
     $(document).ready(function () {
-        $('#awal').datepicker({dateFormat:'dd/mm/yy'});
-        $('#akhir').datepicker({dateFormat:'dd/mm/yy'});
+        $('#awal').datepicker({dateFormat:'yy-mm-dd'});
+        $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
     });
 </script>
