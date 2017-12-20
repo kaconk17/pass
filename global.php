@@ -4,7 +4,7 @@ require_once "view/header.php";
 if (isset($_POST['submit'])) {
     $tanggal_awal = $_POST['awal'];
     $tanggal_akhir = $_POST['akhir'];
-    $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL AND out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir'";
+    $query = "SELECT dept, sum(price)as total FROM tb_recap WHERE out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir' group by dept";
     $result= sqlsrv_query ($conn, $query);
 } else {
     # code...
@@ -19,31 +19,23 @@ if (isset($_POST['submit'])) {
 <table border ='1' width = '800'>
 </script>
 <tr>
-<th>Item Code</th>
-<th>Item</th>
-<th>Spesifikasi</th>
-<th>Qty out</th>
-<th>Uom</th>
-<th>Class</th>
+<th>Departemen</th>
+<th>Total</th>
 <th>Deatail</th>
 </tr>
 
 
 <?php
-
+setlocale(LC_MONETARY, 'en_US');
 
 while ($data = sqlsrv_fetch_array($result)){
 
     echo "
    <tr>
    
-    <td>".$data['item_code']."</td>
-    <td>".$data ['item']."</td>
-    <td>".$data['spesifikasi']."</td>
-    <td>".$data['qty']."</td>
-       <td>".$data ['uom']."</td>
-<td>".$data['class']."</td>
-<td><a href=function/list.php?item=$data[item_code] style=text-decoration:none onclick=post>Detail</a></td>
+    <td>".$data['dept']."</td>
+    <td>".$data ['total']."</td>
+<td><a href=function/list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
     ";
     //sqlsrv_close();
