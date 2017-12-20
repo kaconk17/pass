@@ -35,7 +35,7 @@ while ($data = sqlsrv_fetch_array($result)){
    
     <td>".$data['dept']."</td>
     <td>".$data ['total']."</td>
-<td><a href=function/list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
+<td><a href=list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
     ";
     //sqlsrv_close();
