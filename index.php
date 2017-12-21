@@ -3,7 +3,8 @@ require_once "core/init.php";
 
 if ( isset($_POST['submit'])) {
     $cari = $_POST['cari'];
-    
+    $tanggal_awal = $_POST['awal'];
+    $tanggal_akhir = $POST['akhir'];
     if (!empty(trim($cari))) {
 
         $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL AND item_code LIKE '%".$cari."%'";
