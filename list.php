@@ -1,14 +1,15 @@
 <?php
 require_once "core/init.php";
 require_once "view/header.php";
-//require_once "global.php";
+
 $dept = $_GET['item'];
-//global $tanggal_awal;
-//global $tanggal_akhir;
+ $tanggal_awal = $_SESSION['tgl_awal'];
+ $tanggal_akhir = $_SESSION['tgl_akhir'];
 echo $dept;
 echo $tanggal_awal;
 echo $tanggal_akhir;
 $query = "SELECT item_code, item, qty, uom FROM tb_recap WHERE out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir' and dept ='$dept'";
+//$query = "SELECT item_code, item, qty, uom FROM tb_recap WHERE dept = '$dept'";
     $result= sqlsrv_query ($conn, $query);
 
 ?>

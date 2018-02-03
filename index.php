@@ -2,21 +2,22 @@
 require_once "core/init.php";
 
 if ( isset($_POST['submit'])) {
-    $cari = $_POST['cari'];
-    $tanggal_awal = $_POST['awal'];
-    $tanggal_akhir = $POST['akhir'];
-    if (!empty(trim($cari))) {
+   // $cari = $_POST['cari'];
+     $tanggal_awal = $_POST['awal'];
+    $tanggal_akhir = $_POST['akhir'];
+    if (!empty($tanggal_awal) && !empty($tanggal_akhir) ) {
 
-        $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL AND item_code LIKE '%".$cari."%'";
-        $result= sqlsrv_query ($conn, $query);
+        $_SESSION ['tgl_awal']= $tanggal_awal;
+        $_SESSION ['tgl_akhir']= $tanggal_akhir;
 
+        header('Location: global.php');
     } else {
         echo 'kosong';
     }
     
 }else {
-    $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL";
-    $result= sqlsrv_query ($conn, $query);
+  //  $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL";
+  //  $result= sqlsrv_query ($conn, $query);
 }
 
 
@@ -25,7 +26,7 @@ require_once "view/header.php";
 
 ?>
 
-<form action="global.php" method = "post">
+<form action="index.php" method = "post">
     <label for="">From</label><br>
     <input type="text" id="awal" name="awal"> <br><br>
     <label for="">To</label><br>

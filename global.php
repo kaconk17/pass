@@ -1,15 +1,15 @@
 <?php
 require_once "core/init.php";
 require_once "view/header.php";
-if (isset($_POST['submit'])) {
-    $tanggal_awal = $_POST['awal'];
-    $tanggal_akhir = $_POST['akhir'];
-    //echo $tanggal_awal;
-    //echo $tanggal_akhir;
+if (!isset($_SESSION['tgl_awal']) && !isset($_SESSION['tgl_akhir'])) {
+    
+   header('Location: index.php');
+    
+} else {
+    $tanggal_awal = $_SESSION['tgl_awal'];
+    $tanggal_akhir = $_SESSION['tgl_akhir'];
     $query = "SELECT dept, sum(price)as total FROM tb_recap WHERE out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir' group by dept";
     $result= sqlsrv_query ($conn, $query);
-} else {
-    # code...
 }
 //echo $tanggal_awal;
 //echo $tanggal_akhir;
