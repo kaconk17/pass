@@ -11,7 +11,12 @@
 </head>
 <header>
         <h1>Pemakaian Warehouse</h1>
+        <nav>
+        <a href="index.php">Home</a>
+        </nav>
     </header>
+
+   
 <body>
    
     
