@@ -12,12 +12,11 @@ if ( isset($_POST['submit'])) {
 
         header('Location: global.php');
     } else {
-        echo 'kosong';
+        echo 'Mohon diisi tanggal periodenya';
     }
     
 }else {
-  //  $query = "SELECT item_code, item, spesifikasi, qty, uom, class FROM tb_out WHERE remark IS NULL";
-  //  $result= sqlsrv_query ($conn, $query);
+  
 }
 
 
