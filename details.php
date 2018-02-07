@@ -7,46 +7,40 @@ $item_code = $_GET['item'];
  $tanggal_awal = $_SESSION['tgl_awal'];
  $tanggal_akhir = $_SESSION['tgl_akhir'];
 //$query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom, class, used FROM tb_recap WHERE out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir' AND dept ='$dept' AND item_code = '$item_code'";
-$query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom, class FROM tb_recap WHERE item_code = '$item_code'";
+$query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom FROM tb_recap WHERE item_code = '$item_code' AND dept = '$dept' AND out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir'";
 
-    $result= sqlsrv_query ($conn, $query);
+    $hasil= sqlsrv_query ($conn, $query);
 
-   echo $dept;
-    echo $item_code;
-    echo $tanggal_akhir;
-
-?>
+    ?>
 <table border ='1' width = '800'>
 </script>
 <tr>
-<th>Nomer Out</th>
-<th>Tanggal Out</th>
-<th>Departemen</th>
 <th>Item Code</th>
 <th>Item</th>
 <th>Spesifikasi</th>
 <th>Qty</th>
 <th>Uom</th>
-<th>Class</th>
-
+<th>Departemen</th>
+<th>Tgl Out</th>
+<th>No. Out</th>
 </tr>
 
 <?php
-while ($data = sqlsrv_fetch_array($result)){
-
+while ($data = sqlsrv_fetch_array($hasil)){
+    
+$format = date_format($data ['out_date'],"d F Y");
     echo "
    <tr>
    
-    <td>".$data['out_no']."</td>
-    <td>".$data['out_date']."</td>
-    <td>".$data['dept']."</td>
     <td>".$data['item_code']."</td>
-    <td>".$data['item']."</td>
-    <td>".$data['spesifikasi']."</td>
-    <td>".$data['qty']."</td>
-    <td>".$data['uom']."</td>
-    <td>".$data['class']."</td>
-    
+    <td>".$data ['item']."</td>
+    <td>".$data ['spesifikasi']."</td>
+    <td>".$data ['qty']."</td>
+    <td>".$data ['uom']."</td>
+    <td>".$data ['dept']."</td>
+    <td>".$format."</td>
+    <td>".$data ['out_no']."</td>
+
     </tr>
     ";
     //sqlsrv_close();

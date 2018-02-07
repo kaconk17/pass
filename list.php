@@ -25,10 +25,16 @@ $query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quo
 
 <?php
 while ($data = sqlsrv_fetch_array($result)){
+if ($data['total'] < $data['quota']){
+    $color = 'background-color:#ffab0a';
+}else {
+    $color = 'background-color:#ffffaa';
+    }
+
 
     echo "
-   <tr>
    
+    <tr style=".$color.">
     <td>".$data['item_code']."</td>
     <td>".$data ['item']."</td>
     <td>".$data ['spesifikasi']."</td>
