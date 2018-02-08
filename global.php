@@ -33,11 +33,13 @@ setlocale(LC_MONETARY, 'en_US');
 
 while ($data = sqlsrv_fetch_array($result)){
 
+    $angka = number_format($data['total']);
+
     echo "
    <tr>
    
     <td>".$data['dept']."</td>
-    <td>".$data ['total']."</td>
+    <td>Rp".$angka."</td>
 <td><a href=list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
     ";

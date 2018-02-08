@@ -12,6 +12,8 @@ $query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom 
     $hasil= sqlsrv_query ($conn, $query);
 
     ?>
+    <h1><?php echo $dept  ?></h1>
+<p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
 <table border ='1' width = '800'>
 </script>
 <tr>
@@ -27,7 +29,7 @@ $query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom 
 
 <?php
 while ($data = sqlsrv_fetch_array($hasil)){
-    
+    $angka = number_format($data['qty']);
 $format = date_format($data ['out_date'],"d F Y");
     echo "
    <tr>
@@ -35,7 +37,7 @@ $format = date_format($data ['out_date'],"d F Y");
     <td>".$data['item_code']."</td>
     <td>".$data ['item']."</td>
     <td>".$data ['spesifikasi']."</td>
-    <td>".$data ['qty']."</td>
+    <td>".$angka."</td>
     <td>".$data ['uom']."</td>
     <td>".$data ['dept']."</td>
     <td>".$format."</td>

@@ -11,6 +11,8 @@ $query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quo
     $result= sqlsrv_query ($conn, $query);
 
 ?>
+<h1><?php echo $dept  ?></h1>
+<p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
 <table border ='1' width = '800'>
 </script>
 <tr>
@@ -25,12 +27,21 @@ $query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quo
 
 <?php
 while ($data = sqlsrv_fetch_array($result)){
-if ($data['total'] < $data['quota']){
-    $color = 'background-color:#ffab0a';
-}else {
-    $color = 'background-color:#ffffaa';
-    }
+$pakai = number_format($data['total']);
+$quota = number_format($data['quota']);
 
+if ($quota > 0){
+    if ($pakai > $quota) {
+        $color = 'background-color:#e60000';
+    } else {
+        $color = 'background-color:#ffffff';
+    }
+    
+    
+}else {
+    $color = 'background-color:#ffffff';
+    }
+//$angka = number_format($data['total']);
 
     echo "
    
@@ -38,8 +49,8 @@ if ($data['total'] < $data['quota']){
     <td>".$data['item_code']."</td>
     <td>".$data ['item']."</td>
     <td>".$data ['spesifikasi']."</td>
-    <td>".$data ['quota']."</td>
-    <td>".$data ['total']."</td>
+    <td>".$quota."</td>
+    <td>".$pakai."</td>
     <td>".$data ['uom']."</td>
 <td><a href=details.php?item=$data[item_code] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
