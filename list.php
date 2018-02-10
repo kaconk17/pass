@@ -6,7 +6,7 @@ $dept = $_GET['item'];
 $_SESSION['dept']=$dept;
  $tanggal_awal = $_SESSION['tgl_awal'];
  $tanggal_akhir = $_SESSION['tgl_akhir'];
-$query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quota.quota , sum(tb_recap.qty) as total, tb_recap.uom FROM tb_recap LEFT JOIN tb_quota ON tb_recap.item_code = tb_quota.item_code AND tb_recap.dept=tb_quota.dept WHERE tb_recap.out_date >= '$tanggal_awal' AND tb_recap.out_date <= '$tanggal_akhir' and tb_recap.dept ='$dept' GROUP BY tb_recap.item_code, tb_recap.item,tb_recap.spesifikasi, tb_quota.quota, tb_recap.uom";
+$query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quota.quota , sum(tb_recap.qty) as total, tb_recap.uom FROM tb_recap LEFT JOIN tb_quota ON tb_recap.item_code = tb_quota.item_code AND tb_recap.dept=tb_quota.departemen WHERE tb_recap.out_date >= '$tanggal_awal' AND tb_recap.out_date <= '$tanggal_akhir' and tb_recap.dept ='$dept' GROUP BY tb_recap.item_code, tb_recap.item,tb_recap.spesifikasi, tb_quota.quota, tb_recap.uom";
 
     $result= sqlsrv_query ($conn, $query);
 
@@ -31,7 +31,7 @@ $pakai = number_format($data['total']);
 $quota = number_format($data['quota']);
 
 if ($quota > 0){
-    if ($pakai > $quota) {
+    if ($data['total'] > $data['quota']) {
         $color = 'background-color:#e60000';
     } else {
         $color = 'background-color:#ffffff';
@@ -49,8 +49,8 @@ if ($quota > 0){
     <td>".$data['item_code']."</td>
     <td>".$data ['item']."</td>
     <td>".$data ['spesifikasi']."</td>
-    <td>".$quota."</td>
-    <td>".$pakai."</td>
+    <td align='center'>".$quota."</td>
+    <td align='center'>".$pakai."</td>
     <td>".$data ['uom']."</td>
 <td><a href=details.php?item=$data[item_code] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>

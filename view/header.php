@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="view/style.css">
 </head>
 <header>
+        <img src="view/images/NPMI.png" style="float:left;width:70px;height:70px;">
         <h1>Pemakaian Warehouse</h1>
         <nav>
         <a href="index.php">Home</a>

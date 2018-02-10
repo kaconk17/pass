@@ -39,7 +39,7 @@ while ($data = sqlsrv_fetch_array($result)){
    <tr>
    
     <td>".$data['dept']."</td>
-    <td>Rp".$angka."</td>
+    <td align='center'>Rp ".$angka."</td>
 <td><a href=list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
     ";

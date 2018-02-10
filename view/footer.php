@@ -1,6 +1,6 @@
 
 <footer>
-    &copy; Kaconk 2017
+    &copy; NPMI 2018
 </body>
 
 </footer>
