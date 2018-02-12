@@ -11,7 +11,8 @@
 </head>
 <header>
         <img src="view/images/NPMI.png" style="float:left;width:70px;height:70px;">
-        <h1>Pemakaian Warehouse</h1>
+        <h1>PT. NPR Manufacturing Indonesia</h1>
+        <h2>Pemakaian Warehouse</h2>
         <nav>
         <a href="index.php">Home</a>
         </nav>
