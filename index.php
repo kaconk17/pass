@@ -10,7 +10,7 @@ require_once "view/header.php";
 ?>
 
 <a href="alldept.php"> 
-<img src="view/images/alldept.png" id="icon_dept">
+<img src="view/images/alldept.png" id="icon_dept" style="float:left">
 
 </a>
 

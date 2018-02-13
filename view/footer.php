@@ -10,11 +10,11 @@
         $('#awal').datepicker({dateFormat:'yy-mm-dd'});
         $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
 
-        $('#alldept_btn').hover(function(){
-            $('#alldept_btn').css('color: blue');
+        $('#icon_dept').hover(function(){
+            $('#icon_dept').css('width', '80px','height','80px');
         },
         function () {
-            $('#alldept_btn').css('color: red');
+            $('#icon_dept').css('width', '50px', 'height', '50px');
         });
     });
 </script>
