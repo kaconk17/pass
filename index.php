@@ -8,15 +8,17 @@ require_once "core/init.php";
 require_once "view/header.php";
 
 ?>
-
-<a href="alldept.php"> 
-<img src="view/images/alldept.png" id="icon_dept" style="float:left">
-
+<div class="warehouse">
+<a href="alldept.php" > 
+<img src="view/images/alldept.png" id="icon_dept" > All Deaprtemen
+</a>
+<br>
+<a href="stock.php">
+    <img src="view/images/graph.png" id="stock"> Stock
 </a>
 
-<form action="alldept.php" method = "post">
-<input type="submit" name="alldept_btn" id="alldept_btn" value= "Alldept">
-</form>
+</div>
+
 
 
 <?php

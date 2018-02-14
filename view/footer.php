@@ -11,10 +11,29 @@
         $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
 
         $('#icon_dept').hover(function(){
-            $('#icon_dept').css('width', '80px','height','80px');
+            $('#icon_dept').animate({
+                height:'80px',
+                width: '80px'
+            });
         },
         function () {
-            $('#icon_dept').css('width', '50px', 'height', '50px');
+            $('#icon_dept').animate({
+                height:'50px',
+                width:'50px'
+            });
+        });
+
+        $('#stock').hover(function(){
+            $('#stock').animate({
+                height:'80px',
+                width: '80px'
+            });
+        },
+        function () {
+            $('#stock').animate({
+                height:'50px',
+                width:'50px'
+            });
         });
     });
 </script>
