@@ -27,11 +27,11 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 20;
+$perpage = 2;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 
-$artikel = "SELECT item_code, min_stock, status, item, spesifikasi, end_stock, uom, class, used FROM tb_stock LIMIT $start, $perpage";
+$artikel = "SELECT item_code, min_stock, status, item, spesifikasi, end_stock, uom, class, used FROM tb_stock ";
 
 
 if (isset($_POST['submit'])) {
@@ -47,13 +47,19 @@ if (isset($_POST['submit'])) {
     }
     
 } else {
-    $query = "SELECT item_code, min_stock, status, item, spesifikasi, end_stock, uom, class, used FROM tb_stock";
+    $query = "SELECT item_code, min_stock, status, item, spesifikasi, end_stock, uom, class, used FROM (SELECT *, ROW_NUMBER() OVER(ORDER BY name) as row FROM tb_stock) a WHERE row > $start AND row<= $perpage";
 }
-$result= sqlsrv_query ($conn, $query);
 
-$total = sqlsrv_num_rows($result);
+$record = "SELECT COUNT (item) FROM tb_stock";
+$result= sqlsrv_query ($conn,$record);
 
-while ($data = sqlsrv_fetch_array($result)){
+$final = sqlsrv_query($conn, $query);
+
+//$total = sqlsrv_num_rows($result);
+
+$pages = ceil($result/$perpage);
+
+while ($data = sqlsrv_fetch_array($final)){
 
     $angka = number_format($data['end_stock']);
 
@@ -76,8 +82,15 @@ while ($data = sqlsrv_fetch_array($result)){
 
 
 ?>
-</table>
-<?php
+</table> <br>
+<div class="pages">
+<?php for ($i=1; $i <= $pages ; $i++) { ?>
+    <a href="halaman= <?echo $i?>"><?echo $i?></a>
+<?php } ?>
+   
 
+</div>
+<?php
+echo $result;
 require_once "view/footer.php";
 ?>
