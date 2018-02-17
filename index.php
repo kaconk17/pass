@@ -9,7 +9,7 @@ require_once "view/header.php";
 
 ?>
 <div class="warehouse">
-
+Warehouse <br><br>
     <a href="alldept.php" > 
     <img src="view/images/alldept.png" id="btn_pemakaian"> Pemakaian
     </a>
