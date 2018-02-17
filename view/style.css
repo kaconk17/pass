@@ -6,6 +6,7 @@
 body{
     width: 90%;
     margin: 20px auto;
+    
 }
 header{
     border-bottom: 1px solid grey;
@@ -16,8 +17,22 @@ header{
 footer{
     border-top: 1px solid grey;
     padding: 5px;
-    margin-top: 20px;
+    margin-top: 400px;
 }
 h2{
-    margin-left: 200px;
+    margin-left: 70px;
+}
+
+#btn_pemakaian{
+    height: 50px;
+    width: 50px;
+}
+#stock{
+    height: 50px;
+    width: 50px;
+}
+.warehouse{
+    margin-left: 400px;
+    float: left;
+    
 }

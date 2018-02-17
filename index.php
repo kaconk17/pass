@@ -9,10 +9,13 @@ require_once "view/header.php";
 
 ?>
 <div class="warehouse">
-<a href="alldept.php" > 
-<img src="view/images/alldept.png" id="icon_dept" > All Deaprtemen
-</a>
-<br>
+
+    <a href="alldept.php" > 
+    <img src="view/images/alldept.png" id="btn_pemakaian"> Pemakaian
+    </a>
+
+
+<br> <br>
 <a href="stock.php">
     <img src="view/images/graph.png" id="stock"> Stock
 </a>

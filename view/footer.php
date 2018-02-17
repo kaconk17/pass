@@ -10,14 +10,14 @@
         $('#awal').datepicker({dateFormat:'yy-mm-dd'});
         $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
 
-        $('#icon_dept').hover(function(){
-            $('#icon_dept').animate({
+        $('#btn_pemakaian').hover(function(){
+            $('#btn_pemakaian').animate({
                 height:'80px',
                 width: '80px'
             });
         },
         function () {
-            $('#icon_dept').animate({
+            $('#btn_pemakaian').animate({
                 height:'50px',
                 width:'50px'
             });
