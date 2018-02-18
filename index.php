@@ -15,7 +15,7 @@ Purchasing <br><br>
 <img src="view/images/tags.png" id="btn_price" > Price List
 </a>
 <br><br>
-<a href="view/total_order.php">
+<a href="total_order.php">
 <img src="view/images/buy.png" id="btn_buy"> Order
 </a>
 </div>

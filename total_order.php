@@ -2,8 +2,8 @@
 require_once "core/init.php";
 require_once "view/header.php";
 ?>
-<h3>Used From Stock</h3>
-<form action="alldept.php" method = "post">
+<h3>Total Order</h3>
+<form action="total_order.php" method = "post">
     <label for="">From</label>
     <input type="text" id="awal" name="awal"> 
     <label for="">To</label>
@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     
    $_SESSION['tgl_awal'] = $tanggal_awal;
      $_SESSION['tgl_akhir'] = $tanggal_akhir;
-    $query = "SELECT dept, sum(price)as total FROM tb_recap WHERE out_date >= '$tanggal_awal' AND out_date <= '$tanggal_akhir' group by dept";
+    $query = "SELECT dept, sum(amount)as total FROM tb_incoming WHERE arrive_date >= '$tanggal_awal' AND arrive_date <= '$tanggal_akhir' group by dept";
     $result= sqlsrv_query ($conn, $query);
     echo "<table border ='1' width = '800'>
     </script>
@@ -42,7 +42,7 @@ while ($data = sqlsrv_fetch_array($result)){
    
     <td>".$data['dept']."</td>
     <td align='center'>Rp ".$angka."</td>
-<td><a href=list.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
+<td><a href=list_order.php?item=$data[dept] style=text-decoration:none onclick=post>Detail</a></td>
     </tr>
     ";
     //sqlsrv_close();

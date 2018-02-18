@@ -32,10 +32,10 @@ h2{
     width: 50px;
 }
 .warehouse{
-    margin-left: 300px;
+    margin-left: 70px;
     margin-top: 70px;
     float: left;
-    float: right;
+    
     
 }
 #btn_price{
@@ -50,5 +50,4 @@ h2{
     margin-left: 70px;
     margin-top: 70px;
     float: left;
-    float: right;
 }
