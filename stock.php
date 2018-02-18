@@ -3,6 +3,7 @@ require_once "core/init.php";
 require_once "view/header.php";
 //require_once "core/halaman.php";
 ?>
+<h3>Stock</h3>
 <form action="stock.php" method="post">
     <select name="combo_search" id="combo_search">
         <option value="item">Item</option>
@@ -12,7 +13,7 @@ require_once "view/header.php";
     <input type="text" name="search_txt">
     <input type="submit" name="submit" value="Search">
 </form>
-
+<br>
 <table border ='1' width = '1000'>
     </script>
     <tr>
@@ -101,7 +102,9 @@ $tampil = sqlsrv_query($conn,$query);
 <?php for ($p=1; $p <= $pages ; $p++) { ?>
     <a href="stock.php?halaman= <?echo $p?>"><?echo $p?></a>
 <?php } ?>
-   
+ 
+ <br>
+ <?php echo "Page ".$page." From ".$pages ?>
 
 </div>
 <?php

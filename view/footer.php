@@ -35,5 +35,31 @@
                 width:'50px'
             });
         });
+
+        $('#btn_price').hover(function(){
+            $('#btn_price').animate({
+                height:'80px',
+                width: '80px'
+            });
+        },
+        function () {
+            $('#btn_price').animate({
+                height:'50px',
+                width:'50px'
+            });
+        });
+
+        $('#btn_buy').hover(function(){
+            $('#btn_buy').animate({
+                height:'80px',
+                width: '80px'
+            });
+        },
+        function () {
+            $('#btn_buy').animate({
+                height:'50px',
+                width:'50px'
+            });
+        });
     });
 </script>

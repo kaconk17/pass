@@ -32,9 +32,23 @@ h2{
     width: 50px;
 }
 .warehouse{
-    margin-left: 100px;
+    margin-left: 300px;
     margin-top: 70px;
     float: left;
+    float: right;
     
-    
+}
+#btn_price{
+    height: 50px;
+    width: 50px;
+}
+#btn_buy{
+    height: 50px;
+    width: 50px;
+}
+.purchasing{
+    margin-left: 70px;
+    margin-top: 70px;
+    float: left;
+    float: right;
 }
