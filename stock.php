@@ -29,7 +29,7 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 20;
+$perpage = 3;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 
@@ -107,9 +107,45 @@ $tampil = sqlsrv_query($conn,$query);
 </table> <br>
 
 <div class="pages">
-<?php for ($p=1; $p <= $pages ; $p++) { ?>
-    <a href="stock.php?halaman= <?echo $p?>"><?echo $p?></a>
-<?php } ?>
+    <?php 
+    if ($pages >1) {
+        if ($page == 1) {
+            
+        } else {
+            echo "<a href='stock.php?halaman=1' style='font-size:30px'><<</a>";
+            echo " ";
+            $back = $page -1;
+            
+            echo "<a href='stock.php?halaman=$back' style='font-size:30px'><</a>";
+        }
+        
+    } else {
+        
+    }
+    ?>
+
+    <?php
+
+    if ($pages > 1) {
+        if ($page == $pages) {
+            
+        } else {
+            
+            
+            $next = $page + 1;
+            echo "<a href='stock.php?halaman=$next' style='font-size:30px'>></a>";
+            echo "  ";
+            echo "<a href='stock.php?halaman=$pages' style='font-size:30px'>>></a>";
+        }
+        
+    } else {
+        # code...
+    }
+    
+    
+    
+    ?>
+
  
  <br>
  <?php echo "Page ".$page." From ".$pages ?>

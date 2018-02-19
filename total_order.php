@@ -21,7 +21,7 @@ if (isset($_POST['submit'])) {
     
    $_SESSION['tgl_awal'] = $tanggal_awal;
      $_SESSION['tgl_akhir'] = $tanggal_akhir;
-    $query = "SELECT dept, sum(amount)as total FROM tb_incoming WHERE arrive_date >= '$tanggal_awal' AND arrive_date <= '$tanggal_akhir' group by dept";
+    $query = "SELECT dept, sum(amount)as total, currency FROM tb_incoming WHERE arrive_date >= '$tanggal_awal' AND arrive_date <= '$tanggal_akhir' group by dept";
     $result= sqlsrv_query ($conn, $query);
     echo "<table border ='1' width = '800'>
     </script>
@@ -34,6 +34,9 @@ if (isset($_POST['submit'])) {
     setlocale(LC_MONETARY, 'en_US');
 
 while ($data = sqlsrv_fetch_array($result)){
+
+    
+    
 
     $angka = number_format($data['total']);
 

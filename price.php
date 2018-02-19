@@ -105,10 +105,44 @@ $tampil = sqlsrv_query($conn,$query);
 <br>
 
 <div class="pages">
-<?php for ($p=1; $p <= $pages ; $p++) { ?>
-    <a href="price.php?halaman= <?echo $p?>"><?echo $p?></a>
-<?php } ?>
+<?php 
+    if ($pages >1) {
+        if ($page == 1) {
+            
+        } else {
+            echo "<a href='stock.php?halaman=1' style='font-size:30px'><<</a>";
+            echo " ";
+            $back = $page -1;
+            
+            echo "<a href='stock.php?halaman=$back' style='font-size:30px'><</a>";
+        }
+        
+    } else {
+        
+    }
+    ?>
 
+    <?php
+
+    if ($pages > 1) {
+        if ($page == $pages) {
+            
+        } else {
+            
+            
+            $next = $page + 1;
+            echo "<a href='stock.php?halaman=$next' style='font-size:30px'>></a>";
+            echo " ";
+            echo "<a href='stock.php?halaman=$pages' style='font-size:30px'>>></a>";
+        }
+        
+    } else {
+        # code...
+    }
+    
+    
+    
+    ?>
 <br>
 <?php echo "Page ".$page." From ".$pages ?>
    
