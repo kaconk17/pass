@@ -51,3 +51,11 @@ h2{
     margin-top: 70px;
     float: left;
 }
+table{
+    border-color:solid black;
+    border-collapse: collapse;
+    padding: 15px;
+    width: 100%;
+    
+}
+

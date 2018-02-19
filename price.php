@@ -14,6 +14,7 @@ require_once "view/header.php";
     <input type="submit" name="submit" value="Search">
 </form>
 <br>
+<div style="overflow-x:auto;">
 <table border ='1' width = '1000'>
     </script>
     <tr>
@@ -99,7 +100,9 @@ $tampil = sqlsrv_query($conn,$query);
 
 
 ?>
-</table> <br>
+</table> 
+</div>
+<br>
 
 <div class="pages">
 <?php for ($p=1; $p <= $pages ; $p++) { ?>

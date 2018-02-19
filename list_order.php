@@ -13,6 +13,7 @@ $query = "SELECT po_no, request_no, item_code, item, spesifikasi, qty, uom, pric
 ?>
 <h3>Total Order <?php echo $dept  ?></h3>
 <p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
+<div style="overflow-x:auto;">
 <table border ='1' width = '1000'>
 </script>
 <tr>
@@ -59,6 +60,7 @@ $format = date_format($data ['arrive_date'],"d F Y");
 }
 ?>
 </table>
+</div>
 <?php
 
 require_once "view/footer.php";
