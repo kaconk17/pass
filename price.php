@@ -2,6 +2,7 @@
 require_once "core/init.php";
 require_once "view/header.php";
 ?>
+<h3>Price List</h3>
 <form action="price.php" method="post">
     <select name="combo_search" id="combo_search">
         <option value="item">Item</option>
@@ -28,7 +29,7 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 3;
+$perpage = 30;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 

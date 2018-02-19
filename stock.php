@@ -29,7 +29,7 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 3;
+$perpage = 20;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 
@@ -70,14 +70,22 @@ $tampil = sqlsrv_query($conn,$query);
 
 
   while ($data = sqlsrv_fetch_array($tampil)) {
-      
+   
+        if ($data['status'] == "NG") {
+            $color = 'background-color:#e60000';
+        } else {
+            $color = 'background-color:#ffffff';
+        }
+        
+        
+   
   
 
     $angka = number_format($data['end_stock']);
     $min = number_format($data['min_stock']);
     
         echo"
-        <tr>
+        <tr style=".$color.">
         <td>".$data['item_code']."</td>
         <td>".$min."</td>
         <td>".$data['status']."</td>

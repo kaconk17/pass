@@ -12,7 +12,8 @@ $query = "SELECT out_no, out_date, dept, item_code, item, spesifikasi, qty, uom 
     $hasil= sqlsrv_query ($conn, $query);
 
     ?>
-    <h1><?php echo $dept  ?></h1>
+    <h3>Used From Stock Dept: <?php echo $dept  ?></h3>
+    <h4>Item Code : <?php echo $item_code ?> </h4>
 <p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
 <table border ='1' width = '800'>
 </script>

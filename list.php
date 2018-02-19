@@ -11,7 +11,7 @@ $query = "SELECT tb_recap.item_code, tb_recap.item, tb_recap.spesifikasi, tb_quo
     $result= sqlsrv_query ($conn, $query);
 
 ?>
-<h1><?php echo $dept  ?></h1>
+<h3>Used From Stock Dept: <?php echo $dept  ?></h3>
 <p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
 <table border ='1' width = '800'>
 </script>
