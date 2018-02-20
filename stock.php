@@ -10,7 +10,7 @@ require_once "view/header.php";
         <option value="spec">Spesifikasi</option>
         <option value="item_code">Item Code</option>
     </select>
-    <input type="text" name="search_txt">
+    <input type="text" value="<?php echo $search_txt; ?>" name="search_txt">
     <input type="submit" name="submit" value="Search">
 </form>
 <br>
@@ -29,7 +29,7 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 3;
+$perpage = 30;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 
@@ -112,16 +112,17 @@ $tampil = sqlsrv_query($conn,$query);
         if ($page == 1) {
             
         } else {
-            echo "<a href='stock.php?halaman=1' style='font-size:30px'><<</a>";
+            echo "<a href='stock.php?halaman=1' style='font-size:20px'><<</a>";
             echo " ";
             $back = $page -1;
             
-            echo "<a href='stock.php?halaman=$back' style='font-size:30px'><</a>";
+            echo "<a href='stock.php?halaman=$back' style='font-size:20px'><</a>";
         }
         
     } else {
         
     }
+    echo "....";
     ?>
 
     <?php
@@ -133,9 +134,9 @@ $tampil = sqlsrv_query($conn,$query);
             
             
             $next = $page + 1;
-            echo "<a href='stock.php?halaman=$next' style='font-size:30px'>></a>";
+            echo "<a href='stock.php?halaman=$next' style='font-size:20px'>></a>";
             echo "  ";
-            echo "<a href='stock.php?halaman=$pages' style='font-size:30px'>>></a>";
+            echo "<a href='stock.php?halaman=$pages' style='font-size:20px'>>></a>";
         }
         
     } else {

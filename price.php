@@ -110,11 +110,11 @@ $tampil = sqlsrv_query($conn,$query);
         if ($page == 1) {
             
         } else {
-            echo "<a href='stock.php?halaman=1' style='font-size:30px'><<</a>";
+            echo "<a href='price.php?halaman=1' style='font-size:30px'><<</a>";
             echo " ";
             $back = $page -1;
             
-            echo "<a href='stock.php?halaman=$back' style='font-size:30px'><</a>";
+            echo "<a href='price.php?halaman=$back' style='font-size:30px'><</a>";
         }
         
     } else {
@@ -131,7 +131,7 @@ $tampil = sqlsrv_query($conn,$query);
             
             
             $next = $page + 1;
-            echo "<a href='stock.php?halaman=$next' style='font-size:30px'>></a>";
+            echo "<a href='price.php?halaman=$next' style='font-size:30px'>></a>";
             echo " ";
             echo "<a href='stock.php?halaman=$pages' style='font-size:30px'>>></a>";
         }
