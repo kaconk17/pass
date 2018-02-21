@@ -3,15 +3,15 @@ require_once "core/init.php";
 require_once "view/header.php";
 ?>
 <h3>Price List</h3>
-<form action="price.php" method="post">
+<form action="price.php" method="post" id="frm_price">
     <select name="combo_search" id="combo_search">
         <option value="item">Item</option>
         <option value="spec">Spesifikasi</option>
         <option value="item_code">Item Code</option>
         <option value="supplier">Supplier</option>
     </select>
-    <input type="text" name="search_txt">
-    <input type="submit" name="submit" value="Search">
+    <input type="text" name="search_txt" value="<?php echo isset($_POST['search_text']) ? $_POST['search_text'] : '' ?>">
+    <input type="submit" name="submit_price" value="Search">
 </form>
 <br>
 <div style="overflow-x:auto;">
@@ -30,7 +30,7 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 30;
+$perpage = 3;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 

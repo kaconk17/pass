@@ -9,7 +9,7 @@
     $(document).ready(function () {
         $('#awal').datepicker({dateFormat:'yy-mm-dd'});
         $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
-
+        document.getElementById("search_txt").value = localStorage.getItem("comment");
         $('#btn_pemakaian').hover(function(){
             $('#btn_pemakaian').animate({
                 height:'80px',
@@ -61,5 +61,8 @@
                 width:'50px'
             });
         });
+        
     });
+
 </script>
+<script src="script/java.js"></script>
