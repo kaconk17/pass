@@ -3,16 +3,19 @@ require_once "core/init.php";
 require_once "view/header.php";
 ?>
 <h3>Price List</h3>
-<form action="price.php" method="post" id="frm_price">
+<form action="price.php" method="post" id="frm_price" onClick=>
     <select name="combo_search" id="combo_search">
+    <option value="blank"></option>
         <option value="item">Item</option>
         <option value="spec">Spesifikasi</option>
         <option value="item_code">Item Code</option>
         <option value="supplier">Supplier</option>
     </select>
-    <input type="text" name="search_txt" value="<?php echo isset($_POST['search_text']) ? $_POST['search_text'] : '' ?>">
+    <input type="text" name="search_txt" id="txt1" >
     <input type="submit" name="submit_price" value="Search">
+    <input type="button" id="tombol" value= "test">
 </form>
+<div id="test"></div>
 <br>
 <div style="overflow-x:auto;">
 <table border ='1' width = '1000'>
@@ -30,14 +33,14 @@ require_once "view/header.php";
     </tr>
 
 <?php
-$perpage = 3;
+$perpage = 4;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
 $start   = ($page>1) ? ($page * $perpage) - $page :0 ;
 
 //$artikel = "SELECT item_code, min_stock, status, item, spesifikasi, end_stock, uom, class, used FROM tb_stock ";
 $offset = ($page - 1) * $perpage;
 
-if (isset($_POST['submit'])) {
+//if (isset($_POST['submit_price'])) {
     $combo = $_POST['combo_search'];
     $search_txt= $_POST['search_txt'];
 
@@ -55,7 +58,7 @@ if (isset($_POST['submit'])) {
         $record = "SELECT COUNT (item_record_no) as total FROM tb_masteritem WHERE supplier LIKE '%$search_txt%'";
     }
     
-} else {
+ else {
     
     $query = "select top $perpage item_record_no, item_code, class, item, spesifikasi, uom, price, currency, supplier from tb_masteritem where item_record_no not in (select top $offset item_record_no from tb_masteritem order by item_record_no asc) order by item_record_no asc";
         $record = "SELECT COUNT (item_record_no) as total FROM tb_masteritem";
@@ -101,6 +104,7 @@ $tampil = sqlsrv_query($conn,$query);
 
 ?>
 </table> 
+
 </div>
 <br>
 
@@ -133,7 +137,7 @@ $tampil = sqlsrv_query($conn,$query);
             $next = $page + 1;
             echo "<a href='price.php?halaman=$next' style='font-size:30px'>></a>";
             echo " ";
-            echo "<a href='stock.php?halaman=$pages' style='font-size:30px'>>></a>";
+            echo "<a href='price.php?halaman=$pages' style='font-size:30px'>>></a>";
         }
         
     } else {

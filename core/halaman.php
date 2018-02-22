@@ -1,8 +1,8 @@
 <?php
 
-require_once "core/init.php";
-
-function getPage_stock($final, $page, $perpage) 
+//require_once "init.php";
+echo $_GET['q'];
+/*function getPage_stock($final, $page, $perpage) 
 { 
     $offset = ($page - 1) * $perpage; 
     $rows = array(); 
@@ -17,5 +17,5 @@ function getPage_stock($final, $page, $perpage)
         $i++; 
     } 
     return $rows; 
-}
+}*/
 ?>
