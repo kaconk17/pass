@@ -9,7 +9,7 @@
     $(document).ready(function () {
         $('#awal').datepicker({dateFormat:'yy-mm-dd'});
         $('#akhir').datepicker({dateFormat:'yy-mm-dd'});
-        document.getElementById("search_txt").value = localStorage.getItem("comment");
+       
         $('#btn_pemakaian').hover(function(){
             $('#btn_pemakaian').animate({
                 height:'80px',
@@ -62,40 +62,78 @@
             });
         });
 
-        //$('#tombol').click(function(){
-            //var txt = $('#txt1').text();
-            //$.get('core/halaman.php',{'q':"text"}).done (function(data){
-            //    $('#test').html(data);
-           // });
-          // $('#test').text("hello");
-        //});
+        $('#tombol').click(function(){
+            var search = $('#search_txt').val();
+            var combo = $('#combo_search').val();
+            
+            $.get('table/halaman.php',{'halaman':"1", 'search_txt':search,'combo_search':combo}).done (function(data){
+                $('#area').html(data);
+            });
+           
+        });
+        $.get('table/halaman.php',{'halaman':"1"}).done (function(data){
+                $('#area').html(data);
+            });
         
-    });
+        $('#btn_next').click(function(){
 
-</script>
+//var search = $('#search_txt').val();
+//var combo = $('#combo_search').val();
+            var c = $('.pages').attr("id");
+            var max = c*1;
+            var id = $('.page').attr("id");
+            var a = 1;
+            var x = (id*1) + a;
 
-<script type ="text/javascript">
-function load_ajax(url , callback){
-   var xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = cekstatus;
+            if ((id*1) >= max) {
+                 removeClass('maju');
+            } else {
+     
+             }
+            $.get('table/halaman.php',{'halaman': x}).done (function(data){
+            $('#area').html(data);
+        });
+        addClass('mundur');
+        
 
-    function cekstatus(){
-        if(xhr.readyState === 4 && xhr.status === 200){
-            callback(xhr.responseText);
-        }
-    }
-    xhr.open('GET', url , true);
-    xhr.send();
 
-}
-document.getElementById('tombol').onclick = function (){
-    text = document.getElementById('txt1').value;
 
-    load_ajax('core/halaman.php?q='+ text, function(data){
-        document.getElementById('test').innerHTML= data;
-    });
+        });
+$('#btn_last').click(function(){
+            var c = $('.pages').attr("id");
+            var max = c*1;
+           
+            $.get('table/halaman.php',{'halaman': max}).done (function(data){
+            $('#area').html(data);
+        });
+        removeClass('maju');
+        addClass('mundur');
+        });
 
-    
-};
+        $('#btn_back').click(function(){
+            
+            var id = $('.page').attr("id");
+            var a = 1;
+            var x = (id*1) - a;
+
+            if ((id*1) <= a) {
+                 removeClass('mundur');
+            } else {
+     
+             }
+            $.get('table/halaman.php',{'halaman': x}).done (function(data){
+            $('#area').html(data);
+        });
+        addClass('maju');
+        });
+        $('#btn_first').click(function(){
+            $.get('table/halaman.php',{'halaman': "1"}).done (function(data){
+            $('#area').html(data);
+        });
+        removeClass('mundur');
+        addClass('maju');
+        });
+        
+});
 
 </script>

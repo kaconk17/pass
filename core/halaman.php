@@ -1,6 +1,6 @@
 <?php
 
-//require_once "init.php";
+require_once ($_SERVER["DOCUMENT_ROOT"] . "/core/init.php");
 echo $_GET['q'];
 /*function getPage_stock($final, $page, $perpage) 
 { 
