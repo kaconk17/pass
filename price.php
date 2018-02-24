@@ -5,9 +5,9 @@ require_once "view/header.php";
 <h3>Price List</h3>
 <form action="price.php" method="post" id="frm_price" onClick=>
     <select name="combo_search" id="combo_search">
-    <option value="blank"></option>
+    <option value=""></option>
         <option value="item">Item</option>
-        <option value="spec">Spesifikasi</option>
+        <option value="spesifikasi">Spesifikasi</option>
         <option value="item_code">Item Code</option>
         <option value="supplier">Supplier</option>
     </select>
@@ -18,13 +18,13 @@ require_once "view/header.php";
 <br>
 <div id="test"></div>
 <div id="area"></div>
-<div class="mundur">
+<div class="mundur" style="float:left">
 <input type="button" id="btn_first" value="First">
 <input type="button" id="btn_back" value="Back">
 </div>
-<div class="maju" style="float:left">
-<input type="button" id="btn_next" value="Next">
-<input type="button" id="btn_last" value="Last">
+<div class="maju" style="float:right">
+<input type="button" id="btn_next" class="button" value="Next" >
+<input type="button" id="btn_last" class="button" value="Last">
 </div>
 
 <?php

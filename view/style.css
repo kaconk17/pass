@@ -59,4 +59,12 @@ table{
     width: 100%;
     
 }
+#btn_next {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
 
+#btn_next:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
