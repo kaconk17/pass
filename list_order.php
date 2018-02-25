@@ -13,69 +13,121 @@ if (isset($_GET['item'])) {
     $tanggal_akhir = $_SESSION['tgl_akhir'];
 }
 
-
-
-
- $perpage = 30;
-$page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
-$start   = ($page>1) ? ($page * $perpage) - $page :0 ;
-$offset = ($page - 1) * $perpage;
-$query = "SELECT po_no, request_no, item_code, item, spesifikasi, qty, uom, price, amount, currency, arrive_date, icl_no, supp_name FROM tb_incoming WHERE arrive_date >= '$tanggal_awal' AND arrive_date <= '$tanggal_akhir' and dept LIKE '%.$_%'";
-
-    $result= sqlsrv_query ($conn, $query);
-
 ?>
-<h3>Total Order <?php echo $dept  ?></h3>
-<p><?php echo "Periode : ".$tanggal_awal." Sampai ".$tanggal_akhir."" ?></p>
-<div style="overflow-x:auto;">
-<table border ='1' width = '1000'>
-</script>
-<tr>
-<th>Nomer PO</th>
-<th>Request No.</th>
-<th>Item Code</th>
-<th>Item</th>
-<th>Spesifikasi</th>
-<th>qty</th>
-<th>Uom</th>
-<th>Supplier</th>
-<th>Price</th>
-<th>Amount</th>
-<th>Currency</th>
-<th>Arrive Date</th>
-<th>ICL No.</th>
-</tr>
+<h3 class="total_order" id="<?php echo $dept ?>">Total Order <?php echo $dept  ?></h3>
 
-<?php
-while ($data = sqlsrv_fetch_array($result)){
-$qty = number_format($data['qty']);
-$price = number_format($data['price']);
-$amount = number_format($data['price']*$data['qty']);
-$format = date_format($data ['arrive_date'],"d F Y");
-    echo "
-   
-    <tr >
-    <td>".$data['po_no']."</td>
-    <td>".$data ['request_no']."</td>
-    <td>".$data ['item_code']."</td>
-    <td>".$data['item']."</td>
-    <td>".$data['spesifikasi']."</td>
-    <td>".$qty."</td>
-    <td>".$data ['uom']."</td>
-    <td>".$data ['supp_name']."</td>
-    <td>".$price."</td>
-    <td>".$amount."</td>
-    <td>".$data ['currency']."</td>
-    <td>".$format."</td>
-    <td>".$data ['icl_no']."</td>
-    </tr>
-    ";
-    //sqlsrv_close();
-}
-?>
-</table>
+<div class='tanggal_awal' id="<?php echo $tanggal_awal; ?>" style='float:left'> From <?php echo $tanggal_awal; ?> </div>  <div class='tanggal_akhir' id="<?php echo $tanggal_akhir; ?>" style='float:left'>To <?php echo $tanggal_akhir; ?> </div> <br>
+<br>
+<div id="order_area"></div>
+
+<div class="mundur_order" style="float:left">
+<input type="button" id="first_order" value="First">
+<input type="button" id="back_order" value="Back">
+</div>
+<div class="maju_order" style="float:right">
+<input type="button" id="next_order" class="button" value="Next" >
+<input type="button" id="last_order" class="button" value="Last">
 </div>
 <?php
 
 require_once "view/footer.php";
 ?>
+<script type="text/javascript">
+$(document).ready(function(){
+    var dept = $('.total_order').attr("id");
+    var awal = $('.tanggal_awal').attr("id");
+    var akhir = $('.tanggal_akhir').attr("id");
+
+    $.get('table/table_order.php',{'halaman': "1", 'dept':dept,'tgl_awal':awal,'tgl_akhir':akhir}).done (function(data){
+    $('#order_area').html(data);
+});
+$('#next_order').click(function(){
+
+    var dept = $('.total_order').attr("id");
+    var awal = $('.tanggal_awal').attr("id");
+    var akhir = $('.tanggal_akhir').attr("id");
+    var c = $('.pages_order').attr("id");
+    var max = c*1;
+    var id = $('.page_order').attr("id");
+    var a = 1;
+    var x = (id*1) + a;
+
+if ((id*1) >= max) {
+    
+    removeClass('maju_order');
+} else {
+   
+        $.get('table/table_order.php',{'halaman': x, 'dept':dept,'tgl_awal':awal,'tgl_akhir':akhir}).done (function(data){
+    $('#order_area').html(data);
+});
+   
+    
+ }
+addClass('mundur_order');
+ 
+});
+
+$('#last_order').click(function(){
+
+    var dept = $('.total_order').attr("id");
+    var awal = $('.tanggal_awal').attr("id");
+    var akhir = $('.tanggal_akhir').attr("id");
+    var c = $('.pages_order').attr("id");
+    var max = c*1;
+    
+
+    $.get('table/table_order.php',{'halaman': max, 'dept':dept,'tgl_awal':awal,'tgl_akhir':akhir}).done (function(data){
+        $('#order_area').html(data);
+        });
+
+        removeClass('maju_order');
+
+        addClass('mundur_order');
+
+
+});
+
+$('#back_order').click(function(){
+
+var dept = $('.total_order').attr("id");
+var awal = $('.tanggal_awal').attr("id");
+var akhir = $('.tanggal_akhir').attr("id");
+var id = $('.page_order').attr("id");
+var a = 1;
+var x = (id*1) - a;
+
+if ((id*1) <= a) {
+
+removeClass('mundur_order');
+} else {
+
+    $.get('table/table_order.php',{'halaman': x, 'dept':dept,'tgl_awal':awal,'tgl_akhir':akhir}).done (function(data){
+$('#order_area').html(data);
+});
+
+
+}
+addClass('maju_order');
+
+});
+
+$('#first_order').click(function(){
+
+var dept = $('.total_order').attr("id");
+var awal = $('.tanggal_awal').attr("id");
+var akhir = $('.tanggal_akhir').attr("id");
+
+
+$.get('table/table_order.php',{'halaman': "1", 'dept':dept,'tgl_awal':awal,'tgl_akhir':akhir}).done (function(data){
+    $('#order_area').html(data);
+    });
+
+    removeClass('mundur_order');
+
+    addClass('maju_order');
+
+
+});
+
+});
+</script>

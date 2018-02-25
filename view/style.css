@@ -131,3 +131,39 @@ table{
     background-color: rgb(62, 120, 245); 
     color: white;
 }
+#last_order {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#last_order:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#next_order {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#next_order:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#back_order {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#back_order:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#first_order {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#first_order:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
