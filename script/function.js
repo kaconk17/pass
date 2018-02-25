@@ -1,38 +1,3 @@
-<?php
-require_once "core/init.php";
-require_once "view/header.php";
-?>
-<h3>Price List</h3>
-<form action="price.php" method="post" id="frm_price" onClick=>
-    <select name="combo_search" id="combo_search">
-    <option value=""></option>
-        <option value="item">Item</option>
-        <option value="spesifikasi">Spesifikasi</option>
-        <option value="item_code">Item Code</option>
-        <option value="supplier">Supplier</option>
-    </select>
-    <input type="text" name="search_txt" id="search_txt" >
-    
-    <input type="button" id="tombol" value= "Search">
-</form>
-<br>
-<div id="test"></div>
-<div id="area"></div>
-<div class="mundur" style="float:left">
-<input type="button" id="btn_first" value="First">
-<input type="button" id="btn_back" value="Back">
-</div>
-<div class="maju" style="float:right">
-<input type="button" id="btn_next" class="button" value="Next" >
-<input type="button" id="btn_last" class="button" value="Last">
-</div>
-
-
-<?php
-
-require_once "view/footer.php";
-?>
-<script type="text/javascript">
 $(document).ready(function(){
 /* fungsi load & cari halaman price */
     $('#tombol').click(function(){
@@ -151,4 +116,3 @@ $('#btn_last').click(function(){
 
     
 });
-</script>

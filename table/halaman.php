@@ -1,9 +1,9 @@
 <?php
 include '../function/koneksi.php';
 
-$perpage = 4;
+$perpage = 20;
 $page    = isset($_GET['halaman']) ? (int) $_GET['halaman'] : 1;
-//$page = 2;
+
 $offset = ($page - 1) * $perpage;
 
 $combo = $_GET['combo_search'];
@@ -85,52 +85,10 @@ while ($data = sqlsrv_fetch_array($tampil)) {
 
 ?>
 </table> 
-<?php 
-    /*if ($pages >1) {
-        if ($page == 1) {
-            
-        } else {
-            //echo "<a href='price.php?halaman=1' style='font-size:30px'><<</a>";
-            echo"<input type='button' id='first_btn' value='First'>";
-            echo " ";
-            $back = $page -1;
-            
-            echo "<input type='button' id='back_btn' value='Back'>";
-        }
-        
-    } else {
-        
-    }
-    ?>
-
-    <?php
-
-    if ($pages > 1) {
-        if ($page == $pages) {
-            
-        } else {
-            
-            
-            $next = $page + 1;
-            //echo "<a href='price.php?halaman=$next' style='font-size:30px'>></a>";
-            echo "<div class='pages' >";
-            echo"<input type='button' class='btn_next' id=".$next." value='Next'>";
-            echo " ";
-            echo "<input type='button' class='btn_last' id=".$pages." value='Last'>";
-            echo "</div>";
-        }
-        
-    } else {
-        # code...
-    }
-    
-    */
-    
-    ?>
 <br>
 
 <?php 
 echo"<div class='page' id=".$page." style='float:left'> Page ".$page." </div>  <div class='pages' id=".$pages." style='float:left'>From ".$pages." </div> <br>";
-//echo "Page ".$page." From ".$pages 
+
 
 ?>

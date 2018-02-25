@@ -65,6 +65,69 @@ table{
 }
 
 #btn_next:hover {
-    background-color: #4CAF50; /* Green */
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#btn_last {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#btn_last:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#btn_back {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#btn_back:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#btn_first {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#btn_first:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#first_stock {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#first_stock:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#back_stock {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#back_stock:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#next_stock {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#next_stock:hover {
+    background-color: rgb(62, 120, 245); 
+    color: white;
+}
+#last_stock {
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+#last_stock:hover {
+    background-color: rgb(62, 120, 245); 
     color: white;
 }
